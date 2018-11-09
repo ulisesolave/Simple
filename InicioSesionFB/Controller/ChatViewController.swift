@@ -147,7 +147,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func configureTableView(){
-        messageTableView.rowHeight = UITableViewAutomaticDimension
+        messageTableView.rowHeight = UITableView.automaticDimension
         messageTableView.estimatedRowHeight = 120.0
         print("ENTRA A CONFIGURE TABLEVIEW")
         

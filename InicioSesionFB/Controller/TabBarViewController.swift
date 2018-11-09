@@ -11,55 +11,55 @@ import UIKit
 
 
 class TabBarViewController: UITabBarController {
-    var nombreUsuario = ""
-    var correoUsuario = ""
-    var urlFotoUsuario = NSURL()
+
+    var window: UIWindow?
+
+    var items = [Int]()
+
+    
+    override func viewWillAppear(_ animated: Bool) {
+//        self.tabBarController!.selectedIndex = 1
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
  
-        
+        if window?.rootViewController as? UITabBarController != nil {
+            let tabBarController = window!.rootViewController as! UITabBarController
+            tabBarController.selectedIndex = 0
+        }
 
         print("-------")
         print("ESTOY EN TABBARVIEWCONTROLLER")
-        print("-------")
-        print(nombreUsuario)
-        print("-------")
-        // Do any additional setup after loading the view.
-        
-        
+
+
         guard let viewControllers = viewControllers else {
             return
         }
         
             if let principalViewController = viewControllers.first as? PrincipalViewController {
-                principalViewController.nombreUsuario = self.nombreUsuario
+
+                principalViewController.items = items
                 print("ENTRA AL IF PRINCIPAL TABBAR")
             }
-        
+
         if   let cuentalViewController = viewControllers.last as? CuentaViewController {
         print("ENTRA AL IF CUENTA TABBAR")
-        cuentalViewController.nombreUsuario = self.nombreUsuario
         }
-        
-        
+
+
         if   let registroViewController = viewControllers[1] as? RegistroViewController {
             print("ENTRA AL IF REGISTRO TABBAR")
-            registroViewController.nombreUsuario = self.nombreUsuario
         }
-        
+
+        if   let seguimientoViewController = viewControllers[2] as? SeguimientoViewController {
+            print("ENTRA AL IF SEGUIMIENTO TABBAR")
+        }
+
         if   let chatViewController = viewControllers[3] as? ChatViewController {
-            print("ENTRA AL IF REGISTRO TABBAR")
-            chatViewController.nombreUsuario = self.nombreUsuario
-            chatViewController.urlFotoUsuario = self.urlFotoUsuario
+            print("ENTRA AL IF CHAT TABBAR")
         }
-        
-        
-      //  let secondDes = barViewControllers.viewControllers?[1] as! SecondViewController
-        //secondDes.test = "Hello TabBar 2"
-        
-        
-        
         
     }
     
